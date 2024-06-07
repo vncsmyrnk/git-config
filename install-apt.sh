@@ -4,12 +4,12 @@ name=$1
 email=$2
 
 if [ -z "$name" ] || [ -z "$email" ]; then
-  echo "Usage: git-setup.sh <name> <email>"
+  echo "Usage: git-config.sh <name> <email>"
   exit 1
 fi
 
-echo "Installing dependecies (neovim, git, gcc)..."
-apt install git openssh-keygen openssh-client
+echo "Installing dependecies (git)..."
+apt install git
 
 git config --global user.name $name
 git config --global user.email $email
