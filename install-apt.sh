@@ -1,5 +1,7 @@
 #!/bin/bash
 
+stderr_file=.git-config-error-log
+
 name=$1
 email=$2
 
