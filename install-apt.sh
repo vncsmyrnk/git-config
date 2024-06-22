@@ -1,5 +1,6 @@
 #!/bin/bash
 
+stdout_file=/dev/null
 stderr_file=.git-config-error-log
 
 name=$1
@@ -33,7 +34,7 @@ while :; do
 done
 
 echo "Installing git..."
-apt-get install -y git 2> $stderr_file || handle_error "A problem occurred while installing \033[1mgit\033[0m"
+apt-get install -y git >> $stdout_file 2> $stderr_file || handle_error "A problem occurred while installing \033[1mgit\033[0m"
 
 echo "Setting up git..."
 git config --global user.name $name
