@@ -1,4 +1,6 @@
 [safe]
 	directory = *
-[pull]
-	ff = true
+[url "https://github"]
+	insteadOf = git://github
+[url "git@github.com:"]
+	insteadOf = https://github.com/
