@@ -1,17 +1,17 @@
-# git-config
+# My git config
 
-My default git config.
+This is my local config for [git](https://git-scm.com/).
 
-## Use
+## Install
+
+This project uses [just](https://github.com/casey/just) and [stow](https://www.gnu.org/software/stow/) for the installation.
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/vncsmyrnk/git-config/main/install-apt.sh) $NAME $EMAIL
+just install
 ```
 
-The `--config-only` option makes the script only install git and apply the configurations.
-
-## Example
+Considering `git` is already installed, you can just run:
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/vncsmyrnk/git-config/main/install-apt.sh) "John Doe" john@example.com
+just config
 ```
