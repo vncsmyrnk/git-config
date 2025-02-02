@@ -1,4 +1,4 @@
-# vim: set filetype=gitconfig noet
+# vim: set filetype=gitconfig noet:
 
 [user]
 	name = $GIT_NAME
