@@ -15,3 +15,10 @@ Considering `git` is already installed, you can just run:
 ```bash
 just config
 ```
+
+> [!IMPORTANT]
+> Be sure to set the environment variables `GIT_NAME` and `GIT_EMAIL` to correctly set up the config:
+> ```bash
+> export GIT_NAME="John Doe"
+> export GIT_EMAIL="john.doe@example.com"
+> ```

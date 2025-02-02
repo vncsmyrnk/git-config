@@ -14,7 +14,8 @@ install-deps:
 install: install-deps config
 
 config:
-  @rm -rf ~/.gitconfig
+  @rm -rf ~/.gitconfig*
+  envsubst < .gitconfig.private.template > .gitconfig.private
   stow -t {{home_dir()}} .
 
 unset-config:
