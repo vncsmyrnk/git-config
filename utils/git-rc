@@ -1,0 +1,7 @@
+# vim: set ft=zsh:
+
+# This file sets runtime configuration for git
+# Source it to use
+
+alias git:undo-local-commit="git reset HEAD~"
+alias git:submod-update="git submodule update --recursive --remote"
