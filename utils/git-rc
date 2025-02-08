@@ -5,3 +5,4 @@
 
 alias git:undo-local-commit="git reset HEAD~"
 alias git:submod-update="git submodule update --recursive --remote"
+alias git:undo-rebase="git reset --hard ORIG_HEAD"
