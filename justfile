@@ -1,5 +1,7 @@
 os := `cat /etc/os-release | grep "^NAME=" | cut -d "=" -f2 | tr -d '"'`
 
+utils_path := "${UTILS_SCRIPTS_DIR:-$HOME/utils}"
+
 default:
   just --list
 
@@ -16,7 +18,9 @@ install: install-deps config
 config:
   @rm -rf ~/.gitconfig*
   envsubst < .gitconfig.private.template > .gitconfig.private
-  stow -t {{home_dir()}} .
+  stow -t {{home_dir()}} . --ignore=utils
+  stow -t {{utils_path}} utils
 
 unset-config:
-  stow -D -t {{home_dir()}} .
+  stow -D -t {{home_dir()}} . --ignore=utils
+  stow -D -t {{utils_path}} utils
