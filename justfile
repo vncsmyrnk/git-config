@@ -1,6 +1,6 @@
 os := `cat /etc/os-release | grep "^NAME=" | cut -d "=" -f2 | tr -d '"'`
 
-scripts_path := "${SU_SCRIPTS_PATH:-$HOME/.config/util/scripts}"
+scripts_path := "${SU_SCRIPTS_PATH:-$HOME/.config/util/scripts}/git"
 config_path := "${UTILS_RC_PATH:-$HOME/.utils/rc}"
 
 default:
