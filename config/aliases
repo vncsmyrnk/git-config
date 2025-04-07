@@ -1,5 +1,5 @@
 # vim: set ft=zsh:
 
-alias git:undo-local-commit="git reset HEAD~"
-alias git:submod-update="git submodule update --recursive --remote"
-alias git:undo-rebase="git reset --hard ORIG_HEAD"
+alias grh="git reset HEAD~"
+alias gsurr="git submodule update --recursive --remote"
+alias grho"git reset --hard ORIG_HEAD"
