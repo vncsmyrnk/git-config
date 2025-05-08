@@ -6,3 +6,5 @@
 	insteadOf = git://github
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+[merge]
+	tool = vimdiff
