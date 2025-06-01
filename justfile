@@ -11,13 +11,13 @@ install-deps:
   #!/bin/bash
   if [ "{{os}}" = "Debian GNU/Linux" ] || [ "{{os}}" = "Ubuntu" ]; then
     sudo apt-get git
-    command -v brew >/dev/null || {
-      read -p "Brew has the latest version for gh, apt version is outdated. Install gh over brew or exit? (Y/n)" choice
+    command -v nix-env >/dev/null || {
+      read -p "nix has the latest version for gh, apt version is outdated. Install gh over nix or exit? (Y/n)" choice
       [[ ${choice-y} == "y" ]] || {
         exit 0
       }
     }
-    brew install gh
+    nix-env -iA nixpkgs.gh
   elif [ "{{os}}" = "Arch Linux" ]; then
     sudo pacman -S git gh
   fi
