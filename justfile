@@ -7,22 +7,18 @@ on_update_scripts_path := "${SU_SCRIPTS_ON_UPDATE_PATH:-$HOME/.config/util/scrip
 default:
   just --list
 
-install-deps:
+check-deps:
   #!/bin/bash
-  if [ "{{os}}" = "Debian GNU/Linux" ] || [ "{{os}}" = "Ubuntu" ]; then
-    sudo apt-get git
-    command -v nix-env >/dev/null || {
-      read -p "nix has the latest version for gh, apt version is outdated. Install gh over nix or exit? (Y/n)" choice
-      [[ ${choice-y} == "y" ]] || {
-        exit 0
-      }
-    }
-    nix-env -iA nixpkgs.gh
-  elif [ "{{os}}" = "Arch Linux" ]; then
-    sudo pacman -S git gh
+  dependencies=(git gh)
+  missing_dependencies=($(for dep in "${dependencies[@]}"; do command -v "$dep" &> /dev/null || echo "$dep"; done))
+
+  if [ ${#missing_dependencies[@]} -gt 0 ]; then
+    echo "Dependencies not found: ${missing_dependencies[*]}"
+    echo "Please install them with the appropriate package manager"
+    exit 1
   fi
 
-install: install-deps config
+install: check-deps config
 
 config:
   @rm -rf ~/.gitconfig*
