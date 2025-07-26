@@ -1,5 +1,3 @@
-os := `cat /etc/os-release | grep "^NAME=" | cut -d "=" -f2 | tr -d '"'`
-
 scripts_path := "${SU_SCRIPTS_PATH:-$HOME/.config/util/scripts}/git"
 config_path := "${SU_RC_SOURCE_PATH:-$HOME/.config/setup}/git"
 on_update_scripts_path := "${SU_SCRIPTS_ON_UPDATE_PATH:-$HOME/.config/util/scripts/on-update}"
