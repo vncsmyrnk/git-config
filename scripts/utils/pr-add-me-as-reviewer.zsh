@@ -11,7 +11,6 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
-# TODO: Fix util shift
 pr_number="$1"
 
 gh_user_name=$(gh api user | jq -r .login)
