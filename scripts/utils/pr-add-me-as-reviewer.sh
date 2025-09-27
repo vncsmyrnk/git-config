@@ -1,4 +1,9 @@
-#!/bin/zsh
+#!/usr/bin/env bash
+
+# This script uses the github cli for adding the current
+# user as a reviewer for the PR number passed as an argument
+#
+# help: adds my gh user as a reviewer for a PR
 
 deps=(gh jq)
 command -v $deps >/dev/null || {
@@ -19,4 +24,4 @@ if [ -z "$gh_user_name" ]; then
   exit 1
 fi
 
-gh pr edit $pr_number --add-reviewer $gh_user_name
+gh pr edit "$pr_number" --add-reviewer "$gh_user_name"

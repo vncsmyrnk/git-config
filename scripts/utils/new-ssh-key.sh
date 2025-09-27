@@ -1,7 +1,9 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 
 # This script generates a new ssh key
 # for the current git email
+#
+# help: generates a new ssh key for the current git user
 
 email=$(git config user.email)
 
