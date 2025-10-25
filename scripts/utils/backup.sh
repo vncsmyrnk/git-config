@@ -3,10 +3,13 @@
 # This script creates a copy of the current git branch
 # on the origin remote. The backup branch should be
 # the original name prefixed by "bkp/".
+
+# [help]
+# Creates a backup of the current branch
 #
-# help: creates a backup of the current branch
-#
-# Completions
+# Usage: [--name]
+
+# [completions]
 # --name[Backup branch suffix]:name:
 
 REMOTE=${REMOTE:-origin}
@@ -15,16 +18,16 @@ backup_name=""
 
 while [[ "$#" -gt 0 ]]; do
   case "$1" in
-    --name)
-      if [[ -n "$2" && "$2" != --* ]]; then
-        backup_name="$2"
-        shift
-      fi
-      ;;
-    --) # End of all options
+  --name)
+    if [[ -n "$2" && "$2" != --* ]]; then
+      backup_name="$2"
       shift
-      break
-      ;;
+    fi
+    ;;
+  --)
+    shift
+    break
+    ;;
   esac
   shift
 done
