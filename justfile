@@ -1,7 +1,3 @@
-scripts_path := "${SU_SCRIPTS_PATH:-$HOME/.config/util/scripts}/git"
-config_path := "${SU_RC_SOURCE_PATH:-$HOME/.config/setup}/git"
-on_update_scripts_path := "${SU_SCRIPTS_ON_UPDATE_PATH:-$HOME/.config/util/scripts/on-update}"
-
 default:
   just --list
 
@@ -21,14 +17,13 @@ install: check-deps config
 config:
   @rm -rf ~/.gitconfig*
   envsubst < .gitconfig.private.template > .gitconfig.private
-  mkdir -p  {{scripts_path}} {{config_path}} {{on_update_scripts_path}}
   stow -t {{home_dir()}} . --ignore=scripts --ignore='^config'
-  stow -t {{scripts_path}} -d scripts utils
-  stow -t {{config_path}} config
-  stow -t {{on_update_scripts_path}} -d scripts on-update
+  util config add scripts/utils -t git
+  util config add config -p setup -t git
+  util config add scripts/on-update -p scripts/on-update
 
 unset-config:
   stow -D -t {{home_dir()}} . --ignore=scripts --ignore='^config'
-  stow -D -t {{scripts_path}} -d scripts utils
-  stow -D -t {{config_path}} config
-  stow -D -t {{on_update_scripts_path}} -d scripts on-update
+  util config remove scripts/git --force
+  util config remove setup/git --force
+  util config remove scripts/on-update --original-source scripts/on-update --force
