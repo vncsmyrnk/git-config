@@ -16,14 +16,16 @@ install: check-deps config
 
 config:
   @rm -rf ~/.gitconfig*
+  @mkdir -p "$HOME/.config/shell-setup/git"
   envsubst < .gitconfig.private.template > .gitconfig.private
   stow -t {{home_dir()}} . --ignore=scripts --ignore='^config'
+  stow -t "$HOME/.config/shell-setup/git" config --no-folding
   util config add scripts/utils -t git
-  util config add config -p setup -t git
   util config add scripts/on-update -p scripts/on-update
 
 unset-config:
   stow -D -t {{home_dir()}} . --ignore=scripts --ignore='^config'
+  stow -D -t "$HOME/.config/shell-setup/git" config
   util config remove scripts/git --force
   util config remove setup/git --force
   util config remove scripts/on-update --original-source scripts/on-update --force
