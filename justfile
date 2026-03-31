@@ -21,11 +21,10 @@ config:
   stow -t {{home_dir()}} . --ignore=scripts --ignore='^config'
   stow -t "$HOME/.config/shell-setup/git" config --no-folding
   util config add scripts/utils -t git
-  util config add scripts/on-update -p scripts/on-update
+  util config add scripts/on-update -t on-update
 
 unset-config:
   stow -D -t {{home_dir()}} . --ignore=scripts --ignore='^config'
   stow -D -t "$HOME/.config/shell-setup/git" config
-  util config remove scripts/git --force
-  util config remove setup/git --force
-  util config remove scripts/on-update --original-source scripts/on-update --force
+  util config remove git --force
+  (cd scripts/on-update; find -type f | cut -b 3- | xargs -I{} util config remove on-update/{} --force)
